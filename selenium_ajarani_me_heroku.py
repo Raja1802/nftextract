@@ -1,7 +1,7 @@
 # runs in oracle cloud
 from time import sleep
 import random
-# from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.chrome.options import Options
@@ -47,8 +47,8 @@ def some_job():
             sleep(20)
             # print(response)
         except:
-            driver.get(url="https://amuseanime.netlify.app/episode/126871")
-            sleep(20)
+            # driver.get(url="https://amuseanime.netlify.app/episode/126871")
+            sleep(1)
         # ran = 8
         # if(m%ran == 0):
         #     time_1 = random.randint(3,5)
@@ -87,8 +87,7 @@ for i in range(0, 200000):
         # print(response)
         sleep(20)
     except:
-        driver.get(url="https://amuseanime.netlify.app/episode/126871")  
-        sleep(20)
+        sleep(1)
     # ran = 8
     # if(m%ran == 0):
     #     time_1 = random.randint(3,5)
@@ -107,8 +106,8 @@ for i in range(0, 200000):
     m = m+1
     sleep(3)
     driver.quit()
-# scheduler = BlockingScheduler()
-# scheduler.add_job(some_job, 'interval', hours=1)
-# scheduler.start()
+scheduler = BlockingScheduler()
+scheduler.add_job(some_job, 'interval', hours=1)
+scheduler.start()
 
 # asaklajskajskl
