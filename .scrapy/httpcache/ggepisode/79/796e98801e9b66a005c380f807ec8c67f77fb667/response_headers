@@ -1,0 +1,18 @@
+Date: Wed, 30 Dec 2020 10:56:46 GMT
+Content-Type: text/html; charset=utf-8
+Set-Cookie: __cfduid=dfc25e5b7cd309f32004f90c163e1f83d1609325806; expires=Fri, 29-Jan-21 10:56:46 GMT; path=/; domain=.gogoanime.so; HttpOnly; SameSite=Lax; Secure
+Set-Cookie: gogoanime=lo5pjibcqn2idqnghb0sfq8dc3; path=/
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Powered-By: PHP/5.6.13
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Cf-Cache-Status: DYNAMIC
+Cf-Request-Id: 0754e419df0000319313167000000001
+Expect-Ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?s=ZrFZp12xHfEjx%2FtRLbIfvAJv3bRP2sFprlG9Ue1JF8q6DhSiiC0KHtHGLZ2zXvpwfRLtIDahcCf5XSQ6LJjZRkfIWB4VT1%2FI9xYCnpA%3D"}],"group":"cf-nel","max_age":604800}
+Nel: {"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+Cf-Ray: 609b3c6fcecf3193-BOM
+Content-Encoding: gzip
