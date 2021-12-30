@@ -1,7 +1,7 @@
 # runs in oracle cloud
 from time import sleep
 import random
-from apscheduler.schedulers.blocking import BlockingScheduler
+# from apscheduler.schedulers.blocking import BlockingScheduler
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.chrome.options import Options
@@ -107,8 +107,8 @@ for i in range(0, 200000):
     m = m+1
     sleep(3)
     driver.quit()
-scheduler = BlockingScheduler()
-scheduler.add_job(some_job, 'interval', hours=1)
-scheduler.start()
+# scheduler = BlockingScheduler()
+# scheduler.add_job(some_job, 'interval', hours=1)
+# scheduler.start()
 
 # asaklajs
