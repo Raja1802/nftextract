@@ -16,6 +16,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from fake_useragent import UserAgent
 import os
+import requests
+s = requests.Session()
 CHROMEDRIVER_PATH = r"C:\Users\G RAJA\Desktop\scrapy_mongo\scraper\chromedriver.exe"
 # GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google-chrome"
 # CHROMEDRIVER_PATH = "./chromedriver"
@@ -28,9 +30,9 @@ chrome_options = webdriver.ChromeOptions()
 # chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 # chrome_options.add_argument("--no-sandbox")
 # chrome_options.add_argument("--disable-dev-shm-usage")
-client = pymongo.MongoClient("mongodb://ajar:" + urllib.parse.quote_plus("Raja@1802") + "@cluster0-shard-00-00.1vax0.mongodb.net:27017,cluster0-shard-00-01.1vax0.mongodb.net:27017,cluster0-shard-00-02.1vax0.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-umkr09-shard-0&authSource=admin&retryWrites=true&w=majority")
-db = client.nft
-collect = db["gimmiproxy"]
+# client = pymongo.MongoClient("mongodb://ajar:" + urllib.parse.quote_plus("Raja@1802") + "@cluster0-shard-00-00.1vax0.mongodb.net:27017,cluster0-shard-00-01.1vax0.mongodb.net:27017,cluster0-shard-00-02.1vax0.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-umkr09-shard-0&authSource=admin&retryWrites=true&w=majority")
+# db = client.nft
+# collect = db["gimmiproxy"]
 delay = 3
 ua = UserAgent()
 def some_job():
@@ -74,9 +76,13 @@ def some_job():
 for i in range(2, 4):
     userAgent = ua.random
     print(userAgent)
-    chrome_options.add_argument(f'user-agent={userAgent}')
-    prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
-    PROXY = str(prox[0]["proxy"]["curl"])
+    # chrome_options.add_argument(f'user-agent={userAgent}')
+    # prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
+    response = s.get(url="https://gimmeproxy.com/api/getProxy")
+    data = response.json()
+    PROXY = str(data["curl"])
+    print(data["country"])
+    # PROXY = str(prox[0]["proxy"]["curl"])
     # PROXY = "socks4://179.57.117.107:42630"
     chrome_options.add_argument('--proxy-server=%s' % PROXY)
 #     PROXY = "socks5://localhost:9150"
@@ -89,13 +95,16 @@ for i in range(2, 4):
         )
     episode_id = random.randint(126871, 253992)
     url = f"https://amuseanime.netlify.app/episode/{episode_id}"   
-    browser.get(url=url)
-    time_1 = random.randint(5,7)
-    sleep(time_1)
     try:
-        time_2 = random.randint(5,7)
-        sleep(time_2)
-        sleep(15)
+        browser.get(url=url)
+        time_1 = random.randint(5,7)
+        sleep(time_1)
+    except:
+        print("failed")
+    try:
+        # time_2 = random.randint(5,7)
+        # sleep(time_2)
+        sleep(5)
         browser.save_screenshot('ss.png')
         print("clicked")
     except: 

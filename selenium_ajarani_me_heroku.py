@@ -12,6 +12,8 @@ from selenium.common.exceptions import TimeoutException
 from fake_useragent import UserAgent
 import os
 import json
+import requests
+s = requests.Session()
 delay = 0
 import pymongo
 import urllib
@@ -31,11 +33,14 @@ def some_job():
     for i in range(0, 200000):
         userAgent = ua.random
         print(userAgent)
-        prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
-        PROXY = str(prox[0]["proxy"]["curl"])
+        # prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
+        # PROXY = str(prox[0]["proxy"]["curl"])
+        response = s.get(url="https://gimmeproxy.com/api/getProxy")
+        data = response.json()
+        PROXY = str(data["curl"])
         # PROXY = "socks5://127.0.0.1:9050"
-        chrome_options.add_argument("--incognito")
-        chrome_options.add_argument("--disable-plugins-discovery")
+        # chrome_options.add_argument("--incognito")
+        # chrome_options.add_argument("--disable-plugins-discovery")
         chrome_options.add_argument(f'user-agent={userAgent}')
         chrome_options.add_argument('--proxy-server=%s' % PROXY)
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options,)
@@ -71,11 +76,14 @@ def some_job():
 for i in range(0, 200000):
     userAgent = ua.random
     print(userAgent)
-    prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
-    PROXY = str(prox[0]["proxy"]["curl"])
+    # prox = list(collect.aggregate([{'$sample': {'size': 1 }}]))
+    response = s.get(url="https://gimmeproxy.com/api/getProxy")
+    data = response.json()
+    PROXY = str(data["curl"])
+    # PROXY = str(prox[0]["proxy"]["curl"])
     # PROXY = "socks5://127.0.0.1:9050"
-    chrome_options.add_argument("--incognito")
-    chrome_options.add_argument("--disable-plugins-discovery")
+    # chrome_options.add_argument("--incognito")
+    # chrome_options.add_argument("--disable-plugins-discovery")
     chrome_options.add_argument(f'user-agent={userAgent}')
     chrome_options.add_argument('--proxy-server=%s' % PROXY)
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options,)
