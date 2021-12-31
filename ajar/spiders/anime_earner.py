@@ -20,17 +20,16 @@ import requests
 import pymongo
 import urllib
 from pandas import json_normalize
+from fake_useragent import UserAgent
+ua = UserAgent()
+s = requests.Session()
 
 GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google-chrome"
 CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
 chrome_options = webdriver.ChromeOptions()
-PROXY = "socks5://localhost:9050"
-chrome_options.add_argument("--incognito")        
-chrome_options.add_argument('--proxy-server=%s' % PROXY)
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -41,13 +40,21 @@ class QuotesInfiniteScrollSpider(scrapy.Spider):
     allowed_domains = ["amuseanime.netlify.app"]
     start_urls = []
     def parse(self, response):
+        # PROXY = "socks5://localhost:9050"
+        response = s.get(url="https://gimmeproxy.com/api/getProxy")
+        data = response.json()
+        PROXY = str(data["curl"])
+        chrome_options.add_argument('--proxy-server=%s' % PROXY)
+        userAgent = ua.random
+        chrome_options.add_argument(f'user-agent={userAgent}')
         browser = webdriver.Chrome(
             executable_path=os.environ.get("CHROMEDRIVER_PATH"),
             chrome_options=chrome_options,
         )
         print(response.url)
-        browser.get(response.url)
-        sleep(9) #        
+        yo = browser.get(url=response.url)
+        print(yo)
+        sleep(15)         
         browser.quit()
 
 #kajhs     ashk
