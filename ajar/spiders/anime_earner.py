@@ -43,7 +43,7 @@ class QuotesInfiniteScrollSpider(scrapy.Spider):
         # PROXY = "socks5://localhost:9050"
         respo = s.get(url="https://gimmeproxy.com/api/getProxy")
         data = respo.json()
-
+        print(data)
         PROXY = str(data["curl"])
         chrome_options.add_argument('--proxy-server=%s' % PROXY)
         userAgent = ua.random
@@ -54,8 +54,7 @@ class QuotesInfiniteScrollSpider(scrapy.Spider):
         )
         print(response.url)
         yo = browser.get(url=response.url)
-        print(yo)
-        sleep(15)         
+        sleep(20)         
         browser.quit()
 
-#kajhs     ashk
+#kajhsashk

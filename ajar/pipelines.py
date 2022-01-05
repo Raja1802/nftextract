@@ -27,7 +27,7 @@ class AjarPipeline:
         # client = pymongo.MongoClient("mongodb://ajar:" + urllib.parse.quote_plus("Raja@1802") + "@cluster0-shard-00-00.eyv0d.mongodb.net:27017,cluster0-shard-00-01.eyv0d.mongodb.net:27017,cluster0-shard-00-02.eyv0d.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-110jin-shard-0&authSource=admin&retryWrites=true&w=majority")
         # below for the urls
         client = pymongo.MongoClient("mongodb://ajar:" + urllib.parse.quote_plus("Raja@1802") + "@cluster0-shard-00-00.1vax0.mongodb.net:27017,cluster0-shard-00-01.1vax0.mongodb.net:27017,cluster0-shard-00-02.1vax0.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-umkr09-shard-0&authSource=admin&retryWrites=true&w=majority")
-        db = client.nft
+        db = client.nft_data
         collect = db[spide]
         collect_price = db[spide]
         print(item)
