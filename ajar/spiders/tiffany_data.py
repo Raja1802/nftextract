@@ -41,7 +41,7 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
             chrome_options=chrome_options,
         )
         browser.get(response.url)
-        sleep(0.2)
+        sleep(30)
         scrapy_selector = Selector(text=browser.page_source)
         # css selection of html data tags
         product_id = scrapy_selector.css(
