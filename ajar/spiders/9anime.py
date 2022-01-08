@@ -11,11 +11,11 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 import random
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 CHROMEDRIVER_PATH = r"C:\Users\G RAJA\Desktop\scrapy_mongo\scraper\chromedriver.exe"
 chrome_options = webdriver.ChromeOptions()
-ua = UserAgent()
-ua.update()
+# ua = UserAgent()
+# ua.update()
 # filee = open(r"C:\Users\G RAJA\Desktop\scrapy_mongo\scraper\scraper\output\1.txt",'w')
 # chrome requirments
 # GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google-chrome"
@@ -37,9 +37,9 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
     def parse_result(self, response):
         anime = []
         anime = gogoanimeAnime()
-        userAgent = ua.random
+        # userAgent = ua.random
         # print(userAgent)
-        chrome_options.add_argument(f'user-agent={userAgent}')
+        # chrome_options.add_argument(f'user-agent={userAgent}')
         # PROXY = "socks5://localhost:9150"
         # chrome_options.add_argument('--proxy-server=%s' % PROXY)
         # chrome_options.add_argument('--ignore-certificate-errors')

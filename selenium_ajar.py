@@ -89,7 +89,7 @@ for i in range(2, 4):
     print(data["country"])
     # PROXY = str(prox[0]["proxy"]["curl"])
     # PROXY = "socks4://179.57.117.107:42630"
-    chrome_options.add_argument('--proxy-server=%s' % PROXY)
+    # chrome_options.add_argument('--proxy-server=%s' % PROXY)
 #     PROXY = "socks5://localhost:9150"
 #     chrome_options.add_argument('--proxy-server=%s' % PROXY)
     # chrome_options.add_argument('--ignore-certificate-errors')
@@ -99,20 +99,21 @@ for i in range(2, 4):
             chrome_options=chrome_options,
         )
     episode_id = random.randint(126871, 253992)
-    url = f"https://amuseanime.netlify.app/episode/{episode_id}"   
+    # url = f"https://amuseanime.netlify.app/episode/{episode_id}"   
+    url="https://gogoplay.io/download?id=MTMxNDk2&typesub=Gogoanime-DUB&title=Kimetsu+no+Yaiba+%28Dub%29+Episode+1"
     try:
         browser.get(url=url)
         time_1 = random.randint(5,7)
         sleep(time_1)
-        sleep(10)
+        sleep(20)
     except:
         print("failed")
     try:
         time_2 = random.randint(5,7)
         ran_frame = random.randint(1,10)
-        browser.switch_to.frame(ran_frame)
+        # browser.switch_to.frame(ran_frame)
         sleep(2)
-        options = browser.find_element_by_tag_name('img')
+        options = browser.find_element_by_class_name("dowload")
         options.click()
         sleep(time_2)
         sleep(60)

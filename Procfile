@@ -1,5 +1,5 @@
 web: scrapyrt -p $PORT -i 0.0.0.0 
-worker00: scrapy crawl nautica_urls
+worker00: scrapy crawl ggspider_dat
 worker000: scrapy crawl omega_urls
 worker0000: scrapy crawl chanel_urls
 worker00000: scrapy crawl northface_urls

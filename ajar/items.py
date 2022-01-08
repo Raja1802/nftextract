@@ -37,6 +37,15 @@ class gogoanimeEpisode(scrapy.Item):
     server_11 = scrapy.Field()
     server_12 = scrapy.Field()
 
+class gogoanimeDownload(scrapy.Item):
+    ep_url = scrapy.Field()
+    anime_id = scrapy.Field()
+    name = scrapy.Field()
+    alias_anime = scrapy.Field()
+    episode_number = scrapy.Field()
+    download_1 = scrapy.Field()
+    
+
 class gogoanimeAnime(scrapy.Item):
     anime_id = scrapy.Field()
     name = scrapy.Field()
