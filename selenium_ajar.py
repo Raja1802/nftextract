@@ -105,7 +105,7 @@ for i in range(2, 4):
         browser.get(url=url)
         time_1 = random.randint(5,7)
         sleep(time_1)
-        sleep(20)
+        sleep(100)
     except:
         print("failed")
     try:
