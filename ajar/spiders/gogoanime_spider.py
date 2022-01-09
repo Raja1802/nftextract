@@ -1,6 +1,6 @@
 import scrapy
 from ajar.items import gogoanimeDownload
-from scrapy.spiders import CrawlSpider, Rule, Simpl
+from scrapy.spiders import CrawlSpider, Rule
 from selenium import webdriver
 from time import sleep
 from scrapy.selector import Selector
