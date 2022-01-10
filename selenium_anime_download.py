@@ -11,7 +11,7 @@ import requests
 s = requests.Session()
 
 download_dir = "/app/download"
-os.mkdir(download_dir)
+os.makedir(download_dir)
 # CHROMEDRIVER_PATH = r"C:\Users\G RAJA\Desktop\scrapy_mongo\scraper\chromedriver.exe"
 GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google-chrome"
 CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
