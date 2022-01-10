@@ -1,5 +1,5 @@
 web: scrapyrt -p $PORT -i 0.0.0.0 
-worker00: scrapy crawl gogoapi
+worker00: python selenium_anime_download.py
 worker000: scrapy crawl gogoapi_2
 worker0000: scrapy crawl gogoapi_3
 worker00000: scrapy crawl gogoapi_4
