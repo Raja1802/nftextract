@@ -80,7 +80,7 @@ for index, rowe in df.iterrows():
     # try:
     time_2 = random.randint(5,7)
     sleep(2)
-    options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(3) > a")
+    options = browser.find_element_by_css_selector("dowload")
     options.click()
     sleep(time_2)
     sleep(30)
