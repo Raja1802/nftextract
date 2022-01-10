@@ -10,7 +10,7 @@ import urllib
 import requests
 s = requests.Session()
 
-download_dir = "/app/download"
+download_dir = "/app/download/"
 
 # CHROMEDRIVER_PATH = r"C:\Users\G RAJA\Desktop\scrapy_mongo\scraper\chromedriver.exe"
 GOOGLE_CHROME_PATH = "/app/.apt/usr/bin/google-chrome"
@@ -60,6 +60,7 @@ def enable_download(driver):
 def setting_chrome_options():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
+    chrome_options.binary_location = GOOGLE_CHROME_PATH
     chrome_options.add_argument('--no-sandbox')
     return chrome_options
 
