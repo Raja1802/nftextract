@@ -73,78 +73,78 @@ for index, rowe in df.iterrows():
         sleep(10)
     except:
         print("failed to load page")
-    try:
-        time_2 = random.randint(5,7)
-        sleep(2)
-        options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(3) > a")
-        options.click()
-        sleep(time_2)
-        sleep(30)
-        wait_for_downloads()
-        up_m = uploadtoipfs()
+    # try:
+    time_2 = random.randint(5,7)
+    sleep(2)
+    options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(3) > a")
+    options.click()
+    sleep(time_2)
+    sleep(30)
+    wait_for_downloads()
+    up_m = uploadtoipfs()
 
-        # upload to mongoDB
-        cid=up_m["value"]["cid"]
-        name=up_m["value"]["files"][0]["name"]
-        lin = f"https://{cid}.ipfs.dweb.link/{name}"
-        mongo_li = {"link": lin,  "tracker": rowe["_id"], "ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
-        dup_check = mongocol.find({'tracker':item['tracker']}).count()
-        if dup_check == 0 :     
-            mongocol.insert_one(dict(mongo_li))
-            print ("video Added!")
-        else:
-            print("video Exist")
-        print("insert completed")
-        print("downloaded the video")
-    except:
-        try:
-            time_2 = random.randint(5,7)
-            sleep(2)
-            options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(5) > a")
-            options.click()
-            sleep(time_2)
-            sleep(30)
-            wait_for_downloads()
-            up_m = uploadtoipfs()
-            # upload to mongoDB
-            cid=up_m["value"]["cid"]
-            name=up_m["value"]["files"][0]["name"]
-            lin = f"https://{cid}.ipfs.dweb.link/{name}"
-            mongo_li = {"link": lin, "tracker": rowe["_id"],"ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
-            dup_check = mongocol.find({'tracker':item['tracker']}).count()
-            if dup_check == 0 :     
-                mongocol.insert_one(dict(mongo_li))
-                print ("video Added!")
-            else:
-                print("video Exist")
-            print("insert completed")
-            print("downloaded the video")
-        except:
-            try:
-                time_2 = random.randint(5,7)
-                sleep(2)
-                options = browser.find_elements_by_class_name("dowload")
-                options.click()
-                sleep(time_2)
-                sleep(30)
-                wait_for_downloads()
-                up_m = uploadtoipfs()
+    # upload to mongoDB
+    cid=up_m["value"]["cid"]
+    name=up_m["value"]["files"][0]["name"]
+    lin = f"https://{cid}.ipfs.dweb.link/{name}"
+    mongo_li = {"link": lin,  "tracker": rowe["_id"], "ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
+    dup_check = mongocol.find({'tracker':item['tracker']}).count()
+    if dup_check == 0 :     
+        mongocol.insert_one(dict(mongo_li))
+        print ("video Added!")
+    else:
+        print("video Exist")
+    print("insert completed")
+    print("downloaded the video")
+    # except:
+    #     try:
+    #         time_2 = random.randint(5,7)
+    #         sleep(2)
+    #         options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(5) > a")
+    #         options.click()
+    #         sleep(time_2)
+    #         sleep(30)
+    #         wait_for_downloads()
+    #         up_m = uploadtoipfs()
+    #         # upload to mongoDB
+    #         cid=up_m["value"]["cid"]
+    #         name=up_m["value"]["files"][0]["name"]
+    #         lin = f"https://{cid}.ipfs.dweb.link/{name}"
+    #         mongo_li = {"link": lin, "tracker": rowe["_id"],"ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
+    #         dup_check = mongocol.find({'tracker':item['tracker']}).count()
+    #         if dup_check == 0 :     
+    #             mongocol.insert_one(dict(mongo_li))
+    #             print ("video Added!")
+    #         else:
+    #             print("video Exist")
+    #         print("insert completed")
+    #         print("downloaded the video")
+    #     except:
+    #         try:
+    #             time_2 = random.randint(5,7)
+    #             sleep(2)
+    #             options = browser.find_elements_by_class_name("dowload")
+    #             options.click()
+    #             sleep(time_2)
+    #             sleep(30)
+    #             wait_for_downloads()
+    #             up_m = uploadtoipfs()
 
-                # upload to mongoDB
-                cid=up_m["value"]["cid"]
-                name=up_m["value"]["files"][0]["name"]
-                lin = f"https://{cid}.ipfs.dweb.link/{name}"
-                mongo_li = {"link": lin, "tracker": rowe["_id"],"ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
-                dup_check = mongocol.find({'tracker':item['tracker']}).count()
-                if dup_check == 0 :     
-                    mongocol.insert_one(dict(mongo_li))
-                    print ("video Added!")
-                else:
-                    print("video Exist")
-                print("insert completed")
-                print("downloaded the video")
-            except:
-                print("failed all stages")
-        print("failed to download the video")
+    #             # upload to mongoDB
+    #             cid=up_m["value"]["cid"]
+    #             name=up_m["value"]["files"][0]["name"]
+    #             lin = f"https://{cid}.ipfs.dweb.link/{name}"
+    #             mongo_li = {"link": lin, "tracker": rowe["_id"],"ipfs_meta": dict(up_m), "episode_meta": dict(rowe)}
+    #             dup_check = mongocol.find({'tracker':item['tracker']}).count()
+    #             if dup_check == 0 :     
+    #                 mongocol.insert_one(dict(mongo_li))
+    #                 print ("video Added!")
+    #             else:
+    #                 print("video Exist")
+    #             print("insert completed")
+    #             print("downloaded the video")
+    #         except:
+    #             print("failed all stages")
+    #     print("failed to download the video")
     deletefiles()
     browser.quit()
