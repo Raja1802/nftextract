@@ -23,9 +23,9 @@ chrome_options.binary_location = GOOGLE_CHROME_PATH
 
 
 class QuotesInfiniteScrollSpider(CrawlSpider):
-    name = "omega_products"
+    name = "versace_products"
     rotate_user_agent = True
-    allowed_domains = ["www.omegawatches.com"]
+    allowed_domains = ["www.versace.com"]
     start_urls = []
     # rules = (Rule(sle(allow="/p/", deny=("/c/", )), callback="parse_result", follow=True),)
     #sitemap_urls = ["https://www.pantaloons.com/product-sitemap.xml"]
@@ -49,26 +49,26 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
         ).get()
         product_mrp = (
             scrapy_selector.css(
-                "#product-price-7540 > span::text"
+                "#product-content > div.baseline-medium.product-price-wrapper > div > span > span.js-sl-price::text"
             ).get()
-            or scrapy_selector.css("span.price::text").get()
+            or scrapy_selector.css("span.js-sl-price::text").get()
         )
         product_description = (
             scrapy_selector.css(
-                "div.description-wrapper > p::text"
+                "#tab2 > div.product-details > ul > li::text"
             ).getall()
                )
         product_name = (
             scrapy_selector.css(
-                "h1.product-info-naming-description > span::text"
+                "#product-content > div.title-badge-wrapper > h1.product-name::text"
             ).getall()
               )
         product_ASIN = scrapy_selector.css(
             'head > link[rel= "canonical"]::attr(href)'
         ).get()
-        product_by_url = "www.omegawatches.com"
-        product_by_name = "omegawatches"
-        product_rating = scrapy_selector.css("p.d-sm-ib.pl4-sm::text").getall()
+        product_by_url = "www.versace.com"
+        product_by_name = "versace"
+        product_rating = "NA"
         product_image = (
             scrapy_selector.css(
                 "head > meta[property='og:image']::attr(content)"
@@ -77,36 +77,36 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
         )
         product_image_2 = (
             scrapy_selector.css(
-                "#gallery-frame-1 > img::attr(src)"
+                "#slick-slide81 > img::attr(src)"
             ).getall()
         )
         product_image_3 = (
             scrapy_selector.css(
-                "#gallery-frame-2 > img::attr(src)"
+                "#slick-slide82 > img::attr(src)"
             ).getall()
         )
         product_image_4 = (
             scrapy_selector.css(
-                "#gallery-frame-3 > img::attr(src)"
+                "#slick-slide83 > img::attr(src)"
             ).get()
         )
         product_price = (
-            scrapy_selector.css("span.price::text").get()
+            scrapy_selector.css("#product-content > div.baseline-medium.product-price-wrapper > div > span > span.js-sl-price::text").get()
         )
         product_about = (
             scrapy_selector.css(
-                "#product-info-data-61d5a135898f8 > ul > li > div > p > a::text"
+                "div.product-details > ul > li::text"
             ).getall()
         )
-        product_keywords = "omega, watches, branded"
-        product_catlog = "omegawatches"
+        product_keywords = "versace, watches, branded"
+        product_catlog = "www.versace.com"
         product_price_2 = (
             scrapy_selector.css(
                 "span.price::text"
             ).getall()
         )
 
-        product_keywords_2 = "omega, watches, branded"
+        product_keywords_2 = "versace, watches, branded"
 
         # append data to items
         amazon["product_id"] = product_id

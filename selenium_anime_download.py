@@ -38,7 +38,7 @@ def wait_for_downloads():
 # def uploadtoMongo():
 
 def uploadtoipfs():
-    headers = {'accept': 'application/json','Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDgzYTZhNDQ5ZTI0MjM4ZGEyNDg0NThFRDljQzA5NjA0NGQwMUNiNzgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY0MTY0OTg0MzYyMiwibmFtZSI6InNmc2RmZHMifQ.5Ek8H4dN70JOKcZSIeqC81UjHilt2U58SpGustpNu30'}
+    headers = {'accept': 'application/json','Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDk4RDgwYjBjZWQxNWY3YjIzNjVFQjZCRGE5N0ZjNkQ2MTcxNjQ1YWUiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY0MTY0OTUwMzg3MywibmFtZSI6IjEwMCJ9.yFkmP1H23a26PXrwJ1ZAGGavSaklYx1l2mn1NrBYtAY'}
     for filename in os.listdir(os.environ.get("download_dir")):  
         fff = open(f"{os.environ.get('download_dir')}+{filename}", 'rb')
         files = {'file': fff}
@@ -68,6 +68,9 @@ def setting_chrome_options():
 for index, rowe in df.iterrows():
     browser = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"), options = setting_chrome_options())
     enable_download(browser)
+    cookies = pickle.load(open("cookies.pkl", "rb"))
+    for cookie in cookies:
+        browser.add_cookie(cookie)
     # driver.get(DOWNLOAD_URL)
     url=rowe["download_1"]
     try:

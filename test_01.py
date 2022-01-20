@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import os
 import time
+import pickle
 from time import sleep
 import schedule 
 import random
@@ -57,13 +58,20 @@ def enable_download(driver):
 def setting_chrome_options():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    chrome_options.add_argument('--no-sandbox')
+    # chrome_options.add_argument('--no-sandbox')
     return chrome_options
 
 
 for index, rowe in df.iterrows():
+    # print(index)
+    if index == 1:
+        deletefiles()
     browser = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH, options = setting_chrome_options())
     enable_download(browser)
+    # pickle.dump( browser.get_cookies() , open("cookies.pkl","wb"))
+    # cookies = pickle.load(open("cookies.pkl", "rb"))
+    # for cookie in cookies:
+    #     browser.add_cookie(cookie)
     # driver.get(DOWNLOAD_URL)
     url=rowe["download_1"]
     try:
@@ -76,7 +84,7 @@ for index, rowe in df.iterrows():
     # try:
     time_2 = random.randint(5,7)
     sleep(2)
-    options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(3) > a")
+    options = browser.find_element_by_css_selector("#content-download > div:nth-child(1) > div:nth-child(6) > a")
     options.click()
     sleep(time_2)
     sleep(30)
