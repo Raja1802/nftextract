@@ -77,17 +77,17 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
         )
         product_image_2 = (
             scrapy_selector.css(
-                "#overlay-unique-id-image::attr(data-preview-image-uri)"
+                "#product-imgs > div.mol-media-gallery > div:nth-child(1) > span:nth-child(2) > span > picture > source:nth-child(1)::attr(srcset)"
             ).getall()
         )
         product_image_3 = (
             scrapy_selector.css(
-                "#slick-slide82 > img::attr(src)"
+                "#product-imgs > div.mol-media-gallery > div:nth-child(2) > span:nth-child(1) > span > picture > source:nth-child(1)::attr(srcset)"
             ).getall()
         )
         product_image_4 = (
             scrapy_selector.css(
-                "#slick-slide83 > img::attr(src)"
+                "#product-imgs > div.mol-media-gallery > div:nth-child(2) > span:nth-child(2) > span > picture > source:nth-child(1)::attr(srcset)"
             ).get()
         )
         product_price = (
