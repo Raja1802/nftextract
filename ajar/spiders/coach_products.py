@@ -46,7 +46,7 @@ class QuotesInfiniteScrollSpider(CrawlSpider):
         # css selection of html data tags
         product_id = scrapy_selector.css(
             'head > link[rel= "canonical"]::attr(href)'
-        ).get()
+        ).get() or response.url
         product_mrp = (
             scrapy_selector.css(
                 "div.prices > div > span > span > span.value::text"
